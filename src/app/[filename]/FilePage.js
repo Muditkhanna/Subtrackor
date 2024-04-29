@@ -1,4 +1,3 @@
-
 'use client'
 import TranscriptionEditor from '@/components/TranscriptionEditor';
 import { clearTranscriptionItems } from '@/libs/awsTranscriptionHelpers';
@@ -31,7 +30,9 @@ export default function FilePage({params}){
         });
     }
     useEffect(()=>{ 
-        getTranscription();
+        if(filename){
+            getTranscription();
+        }
     },[filename]);
 
     
@@ -65,3 +66,4 @@ export default function FilePage({params}){
 </div>
     );
 }
+

@@ -104,8 +104,8 @@ export default function ResultVideo({ filename, transcriptionItems }) {
                 {progress && progress<1 && (
                     <div className="absolute inset-0 bg-black/80 flex items-center">
                         <div className="w-full text-center">
-                            <div className="bg-bg-gradient-from/50 mx-8 rounded-lg overflow-hidden relative">
-                                <div className="bg-bg-gradient-from h-8" style={{width:progress*100+'%'}}>
+                            <div className="bg-[#03fc45]/30 mx-8 rounded-lg overflow-hidden relative">
+                                <div className="bg-[#03fc45] h-8" style={{width:progress*100+'%'}}>
                                     <h3 className="text-white text-xl absolute inset-0 py-1">
                                 {parseInt(progress*100)}%
                                     </h3>

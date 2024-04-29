@@ -10,8 +10,8 @@ function getClient() {
     return new TranscribeClient({
         region: 'ap-south-1',
         credentials: {
-            accessKeyId: process.env.AWS_ACCESS_KEY,
-            secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+            accessKeyId: process.env.MUDIT_1999_AWS_ACCESS_KEY,
+            secretAccessKey: process.env.MUDIT_1999_AWS_SECRET_ACCESS_KEY,
         },
     });
 }
@@ -20,11 +20,11 @@ function getClient() {
 function createTranscriptionCommand(filename) {
     return new StartTranscriptionJobCommand({
         TranscriptionJobName: filename,
-        OutputBucketName: process.env.BUCKET_NAME,
+        OutputBucketName: process.env.MUDIT_1999_BUCKET_NAME,
         OutputKey: filename + '.transcription',
         IdentifyLanguage: true,
         Media: {
-            MediaFileUri: 's3://' + process.env.BUCKET_NAME + '/' + filename
+            MediaFileUri: 's3://' + process.env.MUDIT_1999_BUCKET_NAME + '/' + filename
         }
     });
 }
@@ -58,12 +58,12 @@ async function getTranscriptionFile(filename) {
     const s3Client = new S3Client({
         region: 'ap-south-1',
         credentials: {
-            accessKeyId: process.env.AWS_ACCESS_KEY,
-            secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+            accessKeyId: process.env.MUDIT_1999_AWS_ACCESS_KEY,
+            secretAccessKey: process.env.MUDIT_1999_AWS_SECRET_ACCESS_KEY,
         }
     });
     const getObjectCommand = new GetObjectCommand({
-        Bucket: process.env.BUCKET_NAME,
+        Bucket: process.env.MUDIT_1999_BUCKET_NAME,
         Key: transcriptionFileName,
     });
 
@@ -122,6 +122,5 @@ export async function GET(req) {
             status: newJob.TranscriptionJob.TranscriptionJobStatus,
         }), { headers: { 'Content-Type': 'application/json' } });
     } catch (error) {
-        return new Response("Error: Failed to start transcription job", { status: 500 });
     }
 }
