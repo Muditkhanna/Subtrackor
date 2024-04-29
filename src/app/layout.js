@@ -1,7 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
-import sparkleIcon from "@/components/SparkleIcon";
+import SparkleIcon from "@/components/SparkleIcon";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
         <main className="p-4 max-w-2xl mx-auto">
         <header className="flex justify-between my-2 sm:my-8 text-[#ddf0ed]">
         <Link href="/" className="flex gap-1">
-        {sparkleIcon()}
+        <SparkleIcon/>
         <span>{captioniser}</span>
         </Link>
         <nav className="flex items-center gap-2 sm:gap-6 text-[#ddf0ed]/80 text-sm sm:text-lg">
